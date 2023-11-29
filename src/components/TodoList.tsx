@@ -1,7 +1,8 @@
 import { useSetAtom, useAtom } from "jotai"
 import { TodoForm } from "./TodoForm"
-import { activeListAtom, dataAtom } from "../lib/atoms"
-import { TodoItem } from "./TodoItem"
+import { activeListAtom, dataAtom } from "@/lib/atoms"
+import { TodoItem } from "@/components/TodoItem"
+import { Button } from "@/components/ui/button"
 
 
 export const TodoList = () => {
@@ -25,11 +26,11 @@ export const TodoList = () => {
 
     return (
         <div className="flex flex-col grow">
-            <div className="text-5xl py-12">{activeList}</div>
-            <div>
-                <button onClick={deleteList}>delete List</button>
+            <div className="text-6xl py-12 m-4">{activeList}</div>
+            <div className="m-4">
+                <Button onClick={deleteList} variant={'ghost'} className="text-red-500">delete List</Button>
             </div>
-            <div className="grow">
+            <div className="grow m-4">
                 {todos?.todos.map(todo => <TodoItem key={todo.id} id={todo.id} />)}
             </div>
             <TodoForm />

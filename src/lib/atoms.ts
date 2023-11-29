@@ -1,5 +1,5 @@
 import { atom } from "jotai";
-import { type Data } from './types'
+import { type Data } from '@/lib/types'
 
 
 const initTodos: Data = [{
