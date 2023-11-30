@@ -30,9 +30,12 @@
   "include": [
     "src",
   ],
+  "types": [
+    "vite-plugin-pwa/react"],
   "references": [
     {
       "path": "./tsconfig.node.json"
+      
     }
   ]
 }

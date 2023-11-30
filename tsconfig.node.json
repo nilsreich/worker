@@ -6,7 +6,7 @@
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
     "types": [
-      "vite-plugin-pwa/client"
+      "vite-plugin-pwa/react"
     ]
   },
   "include": [
