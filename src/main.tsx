@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./globals.css";
 // eslint-disable-next-line
-import { registerSW } from "virtual:pwa-register";
+import { registerSW } from "virtual:pwa-register"; // eslint-disable-line
 
 // add this to prompt for a refresh
 const updateSW = registerSW({
