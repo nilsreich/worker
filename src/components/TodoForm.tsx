@@ -12,20 +12,22 @@ export const TodoForm = () => {
     if (value.trim() === "") {
       return;
     }
-    todosSignal.value = todosSignal.value.map((list) =>
-      list.list === activeListAtom.value
-        ? {
-            ...list,
-            todos: [
-              ...list.todos,
-              { id: crypto.randomUUID(), title: value, completed: false },
-            ],
-          }
-        : list,
-    );
+    todosSignal.value = {
+      ...todosSignal.value,
+      data: todosSignal.value.data.map((list) =>
+        list.list === activeListAtom.value
+          ? {
+              ...list,
+              todos: [
+                ...list.todos,
+                { id: crypto.randomUUID(), title: value, completed: false },
+              ],
+            }
+          : list
+      ),
+    };
     setValue("");
   };
-
   return (
     <form
       onSubmit={(e) => handleSubmit(e)}

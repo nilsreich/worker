@@ -6,7 +6,7 @@ export const Sidebar = () => {
   return (
     <div className="w-[250px] border-r hidden md:flex flex-col">
       <div className="grow flex flex-col">
-        {todosSignal.value.map((item, index) => (
+        {todosSignal.value.data.map((item, index) => (
           <Button
             variant={"ghost"}
             key={index}

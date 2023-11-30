@@ -3,37 +3,44 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 
 export const TodoItem = ({ id }: { id: string }) => {
-  const todo = todosSignal.value
-    .find((item) => item.list === activeListAtom.value)
-    ?.todos.find((todo) => todo.id === id);
+  const todo = todosSignal.value.data
+  .find((list) => list.list === activeListAtom.value)
+  ?.todos.find((todo) => todo.id === id);
 
-  const toggleTodo = () => {
-    todosSignal.value = todosSignal.value.map((list) =>
+const toggleTodo = () => {
+  todosSignal.value = {
+    ...todosSignal.value,
+    data: todosSignal.value.data.map((list) =>
       list.list === activeListAtom.value
         ? {
             ...list,
             todos: list.todos.map((todo) =>
-              todo.id === id ? { ...todo, completed: !todo.completed } : todo,
+              todo.id === id ? { ...todo, completed: !todo.completed } : todo
             ),
           }
-        : list,
-    );
+        : list
+    ),
   };
+};
 
-  const deleteTodo = () => {
-    todosSignal.value = todosSignal.value.map((list) =>
+const deleteTodo = () => {
+  todosSignal.value = {
+    ...todosSignal.value,
+    data: todosSignal.value.data.map((list) =>
       list.list === activeListAtom.value
         ? {
             ...list,
             todos: list.todos.filter((todo) => todo.id !== id),
           }
-        : list,
-    );
+        : list
+    ),
   };
+};
 
-  if (!todo) {
-    return null;
-  }
+if (!todo) {
+  return null;
+}
+
 
   return (
     <div className="flex items-center gap-2">

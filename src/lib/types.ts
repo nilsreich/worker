@@ -1,8 +1,10 @@
-export type Data = {
-    list:string,
-    todos:{
-        id:string,
-        title:string,
-        completed:boolean
-    }[]
-}[]
+export  type TodoData = {
+    data: {
+        list: string;
+        todos: {
+            id: string;
+            title: string;
+            completed: boolean;
+        }[];
+    }[];
+};

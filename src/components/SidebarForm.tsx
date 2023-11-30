@@ -10,7 +10,10 @@ export const SidebarForm = () => {
     if (value.trim() === "") {
       return null;
     }
-    todosSignal.value = [...todosSignal.value, { list: value, todos: [] }];
+    todosSignal.value = {
+      ...todosSignal.value,
+      data: [...todosSignal.value.data, { list: value, todos: [] }],
+    };
     setValue("");
   };
 

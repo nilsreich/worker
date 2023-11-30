@@ -4,14 +4,17 @@ import { TodoItem } from "@/components/TodoItem";
 import { Button } from "@/components/ui/button";
 
 export const TodoList = () => {
-  const todos = todosSignal.value.find(
+  const todos = todosSignal.value.data.find(
     (item) => item.list === activeListAtom.value,
   );
 
   const deleteList = () => {
-    todosSignal.value = todosSignal.value.filter(
-      (list) => list.list !== activeListAtom.value,
-    );
+    todosSignal.value = {
+      ...todosSignal.value,
+      data: todosSignal.value.data.filter(
+        (list) => list.list !== activeListAtom.value
+      )
+    };
   };
   return (
     <div className="flex flex-col grow">
