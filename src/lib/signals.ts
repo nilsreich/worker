@@ -48,6 +48,6 @@ const initTodos: TodoData = {
 };
 
 export const todosSignal = signal<TodoData>(initTodos);
-export const activeListAtom = signal<string>("Schule");
+export const activeListSignal= signal<string>("Schule");
 export const sessionSignal = signal<Session|null>(null);
-
+export const sidebarSignal = signal<boolean>(true)

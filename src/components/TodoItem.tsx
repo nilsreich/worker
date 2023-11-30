@@ -1,17 +1,17 @@
-import { todosSignal, activeListAtom } from "@/lib/signals";
+import { todosSignal, activeListSignal } from "@/lib/signals";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 
 export const TodoItem = ({ id }: { id: string }) => {
   const todo = todosSignal.value.data
-  .find((list) => list.list === activeListAtom.value)
+  .find((list) => list.list === activeListSignal.value)
   ?.todos.find((todo) => todo.id === id);
 
 const toggleTodo = () => {
   todosSignal.value = {
     ...todosSignal.value,
     data: todosSignal.value.data.map((list) =>
-      list.list === activeListAtom.value
+      list.list === activeListSignal.value
         ? {
             ...list,
             todos: list.todos.map((todo) =>
@@ -27,7 +27,7 @@ const deleteTodo = () => {
   todosSignal.value = {
     ...todosSignal.value,
     data: todosSignal.value.data.map((list) =>
-      list.list === activeListAtom.value
+      list.list === activeListSignal.value
         ? {
             ...list,
             todos: list.todos.filter((todo) => todo.id !== id),
