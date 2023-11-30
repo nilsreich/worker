@@ -28,7 +28,7 @@
     "noUnusedParameters": true,
   },
   "include": [
-    "src",
+    "src", "global.d.ts",
   ],
   "types": [
     "vite-plugin-pwa/react"],
