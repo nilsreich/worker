@@ -17,7 +17,7 @@ export const Auth = () => {
   };
 
   return (
-    <form onSubmit={handleLogin}>
+    <form onSubmit={handleLogin} className="m-auto border p-4 rounded gap-4 flex flex-col">
       <Input
         placeholder="Email"
         value={email}

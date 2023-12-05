@@ -19,7 +19,7 @@ function App() {
       sessionSignal.value = session;
     });
   }, []);
-
+  /* 
   useEffect(() => {
     let ignore = false;
     async function getTodos() {
@@ -52,7 +52,7 @@ function App() {
       ignore = true;
     };
   }, [sessionSignal.value]);
-
+ */
   useEffect(() => {
     let ignore = false;
 
@@ -83,13 +83,15 @@ function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div className="flex flex-col h-[100svh]">
-        <Navbar />
         {!sessionSignal.value ? (
           <Auth />
         ) : (
-          <div className="flex grow">
-            <Sidebar />
-            <TodoList />
+          <div className="flex flex-col h-[100svh]">
+            <Navbar />
+            <div className="flex grow">
+              <Sidebar />
+              <TodoList />
+            </div>
           </div>
         )}
       </div>

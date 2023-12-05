@@ -32,7 +32,7 @@ export const Sidebar = () => {
   return (
     <div
       className={`w-[250px] ${
-        sidebarSignal.value ? "md:flex " : "hidden md:flex"
+        sidebarSignal.value ? " flex" : "hidden"
       } flex-col`}
     >
       <Dialog open={open} onOpenChange={setOpen}>
@@ -45,7 +45,6 @@ export const Sidebar = () => {
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>Create a new list</DialogTitle>
-
           </DialogHeader>
           <div className="grid gap-4 py-4">
             <form onSubmit={(e) => handleSubmit(e)} className="m-1">
