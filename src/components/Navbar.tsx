@@ -18,9 +18,7 @@ import {
   MenubarRadioItem,
   MenubarSeparator,
   MenubarShortcut,
-  MenubarSub,
-  MenubarSubContent,
-  MenubarSubTrigger,
+
   MenubarLabel,
   MenubarTrigger,
 } from "@/components/ui/menubar";
@@ -32,7 +30,6 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { supabase } from "@/supabaseClient";
 

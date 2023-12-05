@@ -5,11 +5,11 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { useEffect, useState } from "react";
 import { supabase } from "./supabaseClient";
 import { Auth } from "@/components/Auth";
-import { activeListSignal, sessionSignal } from "@/lib/signals";
+import {  sessionSignal } from "@/lib/signals";
 import { todosSignal } from "@/lib/signals";
 
 function App() {
-  const [fetching, setFetching] = useState(true);
+  const [fetching] = useState(true);
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       sessionSignal.value = session;
