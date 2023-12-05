@@ -5,11 +5,11 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { useEffect, useState } from "react";
 import { supabase } from "./supabaseClient";
 import { Auth } from "@/components/Auth";
-import {  sessionSignal } from "@/lib/signals";
+import {  activeListSignal, sessionSignal } from "@/lib/signals";
 import { todosSignal } from "@/lib/signals";
 
 function App() {
-  const [fetching] = useState(true);
+  const [fetching, setFetching] = useState(true);
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       sessionSignal.value = session;
@@ -19,7 +19,7 @@ function App() {
       sessionSignal.value = session;
     });
   }, []);
-  /* 
+  
   useEffect(() => {
     let ignore = false;
     async function getTodos() {
@@ -52,7 +52,7 @@ function App() {
       ignore = true;
     };
   }, [sessionSignal.value]);
- */
+ 
   useEffect(() => {
     let ignore = false;
 
@@ -62,7 +62,6 @@ function App() {
         const { error } = await supabase
           .from("todos")
           .upsert({ id: sessionSignal.value.user.id, data: todosSignal.value });
-        console.log("data send");
         if (!ignore) {
           if (error) {
             console.log(error.message);

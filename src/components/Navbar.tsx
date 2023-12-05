@@ -56,6 +56,24 @@ export const Navbar =  () => {
     if (error) console.log("Error logging out:", error.message);
   };
 
+  const refetchTodos = async () =>{
+    // Check if sessionSignal.value is not null and has a 'user' property
+    if (sessionSignal.value && "user" in sessionSignal.value) {
+      const { user } = sessionSignal.value;
+
+      const { data } = await supabase
+        .from("todos")
+        .select(`data`)
+        .eq("id", user.id)
+        .single();
+
+      if (data) {
+          todosSignal.value = data.data;
+        }
+      }
+    }
+  
+
   return (
     <nav className="flex items-center justify-between  h-12">
       <Dialog open={open} onOpenChange={() => setOpen(!open)}>
@@ -139,7 +157,7 @@ export const Navbar =  () => {
           <MenubarTrigger>{sessionSignal.value?.user.email}</MenubarTrigger>
           <MenubarContent>
             <MenubarItem>Statistics</MenubarItem>
-            <MenubarItem>Refetch from database</MenubarItem>
+            <MenubarItem onSelect={()=>refetchTodos()}>Refetch from database</MenubarItem>
             <MenubarSeparator />
             <MenubarItem onSelect={() => handleLogout()}>Logout</MenubarItem>
           </MenubarContent>
