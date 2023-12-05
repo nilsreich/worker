@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { FormEvent, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { PlusIcon } from "lucide-react";
-import { ScrollArea } from "./ui/scroll-area";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Label } from "@/components/ui/label";
 
 export const TodoList = () => {
   const [value, setValue] = useState("");
@@ -46,15 +47,20 @@ export const TodoList = () => {
   };
   return (
     <div className="flex flex-col grow">
-      <ScrollArea className="h-[calc(100svh-7rem)]">
-      <div className="text-6xl py-12 m-4">{activeListSignal.value}</div>
+      <ScrollArea className="h-[calc(100svh-7rem)] p-4">
+      <div className="text-6xl py-12">{activeListSignal.value}</div>
       <div className="m-4">
         <Button onClick={deleteList} variant={"ghost"} className="text-red-500">
           delete List
         </Button>
       </div>
-      <div className="grow m-4">
-        {todos?.todos.map((todo) => <TodoItem key={todo.id} id={todo.id} />)}
+      <Label className="text-foreground/40">Items</Label>
+      <div className="grow">
+        {todos?.todos.filter(item=>item.completed===false).map((todo) => <TodoItem key={todo.id} id={todo.id} />)}
+      </div>
+      <Label className="text-foreground/40">Completed</Label>
+      <div className="grow">
+        {todos?.todos.filter(item=>item.completed!==false).map((todo) => <TodoItem key={todo.id} id={todo.id} />)}
       </div>
       </ScrollArea>
       <form

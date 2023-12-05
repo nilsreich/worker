@@ -127,10 +127,7 @@ export const Navbar =  () => {
         <MenubarMenu>
           <MenubarTrigger>View</MenubarTrigger>
           <MenubarContent>
-            <MenubarItem>
-              Search... <MenubarShortcut>⇧⌘S</MenubarShortcut>
-            </MenubarItem>
-            <MenubarSeparator />
+
             <MenubarCheckboxItem checked>
               Hide completed todos <MenubarShortcut>⇧⌘H</MenubarShortcut>
             </MenubarCheckboxItem>
